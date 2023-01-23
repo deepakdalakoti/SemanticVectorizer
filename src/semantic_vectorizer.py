@@ -67,15 +67,17 @@ class SemanticCountVectorizer(CountVectorizer):
     def fit_transform(self, raw_documents, y=None):
         # Fit CountVectorizer and get counts of vocabulary
         X = super().fit_transform(raw_documents)
+        #Sort by vocabulary index, because counts are given in this order
+        terms = [k for k, _ in sorted(self.vocabulary_.items(), key=lambda item: item[1])]
         # Compute embeddings, potentially could add dimensionally reduction like BerTopic
-        embeddings = self.embedding_model.encode(list(self.vocabulary_.keys()))
+        embeddings = self.embedding_model.encode(terms)
         # Fit clustering model to identify similar tokens
         self.cluster_model.fit(embeddings)
         # Count of tokens in all documents
         counts = X.sum(axis=0).tolist()
         # make a df_out
         vals = {
-            "term": list(self.vocabulary_.keys()),
+            "term": terms,
             "labels": self.cluster_model.labels_,
             "counts": counts[0],
         }
