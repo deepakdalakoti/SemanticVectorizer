@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "semantic_counter"
+version = "0.0.1"
+authors = [
+  { name="Deepak Dalakoti", email="deepakkdalakoti@gmail.com" },
+]
+description = "A wrapper around CountVectorizer which counts semantically similar tokens"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/deepakdalakoti/SemanticVectorizer"
+"Bug Tracker" = "https://github.com/deepakdalakoti/SemanticVectorizer/issues"
