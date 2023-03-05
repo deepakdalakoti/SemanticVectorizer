@@ -5,12 +5,18 @@ SemanticCountVectorizer extends CountVectorizer by counting the frequency of sem
 SemanticCountVectorizer uses sentence_transformers to compute embedding of n-grams and then clusters similar terms using Agglomerative Clustering using cosine similarity as the similarity metric
 
 ---
+
+### Installation
+
+`pip install semantic_counter`
+
+
 ### Usage
 
 ```
-from semantic_vectorizer import SemanticCountVectorizer 
+from semantic_counter.semantic_vectorizer import SemanticCountVectorizer 
 sentences = ['this is a test sentences','this is another test sentence']
-svect = SemanticVectorizer(embedding_model_name='all-MiniLM-L6-v2', similarity_threshold=0.7, ngram_range=(3,3))
+svect = SemanticCountVectorizer(embedding_model_name='all-MiniLM-L6-v2', similarity_threshold=0.7, ngram_range=(3,3))
 counts=svect.fit_transform(sentences)
 ```
 
